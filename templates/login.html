@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Mercado Livre</title>
+  <link rel="stylesheet" href="/static/css/styles.css">
+  <style>
+    /* Oculta o conteúdo principal até o login */
+    .main-content {
+      display: none;
+    }
+    .error-message {
+      color: red;
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+  <!-- Formulário de Login -->
+  <section class="login-section">
+    <div class="login-container">
+      <h2>Login</h2>
+      <form id="loginForm" onsubmit="handleLogin(event)">
+        <div class="form-group">
+          <label for="email">E-mail</label>
+          <input type="email" id="email" name="email" placeholder="Digite seu e-mail" required>
+        </div>
+        <div class="form-group">
+          <label for="password">Senha</label>
+          <input type="password" id="password" name="password" placeholder="Digite sua senha" required>
+        </div>
+        <button type="submit" class="btn-login">Entrar</button>
+        <div class="register-link">
+          <p>Não tem conta? <a href="#">Cadastre-se</a></p>
+        </div>
+        <p class="error-message" id="errorMessage" style="display: none;">Email ou senha inválidos. Tente novamente.</p>
+      </form>
+    </div>
+  </section>
+
+  <!-- Conteúdo Principal (Inicialmente Oculto) -->
+  <div class="main-content">
+    <!-- Cabeçalho -->
+    <header>
+      <div class="logo">
+        <h1>Mercado Livre</h1>
+      </div>
+      <nav>
+        <ul>
+          <li><a href="#">Início</a></li>
+          <li><a href="#">Categorias</a></li>
+          <li><a href="#">Ofertas</a></li>
+          <li><a href="#">Minha Conta</a></li>
+          <li><a href="#">Carrinho</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <!-- Banner -->
+    <section class="banner">
+      <img src="https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/ae4aa3165544517.641a1ee4d4ba7.jpg" alt="Banner Principal">
+    </section>
+
+    <!-- Categorias -->
+    <section class="categories">
+      <h2>Categorias</h2>
+      <div class="category-list">
+        <div class="category-item">
+          <img src="https://th.bing.com/th/id/R.6c4d41b594b67eaea4d465e06247f2cb?rik=dnII%2f9pxMPbmXA&pid=ImgRaw&r=0" alt="Categoria 1">
+          <p>Eletrônicos</p>
+        </div>
+        <div class="category-item">
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSOtAg7xMLmNSHGVitrX0lGk1CycgJu5QLqHQ&s" alt="Categoria 2">
+          <p>Lazer</p>
+        </div>
+        <!-- Mais Categorias -->
+      </div>
+    </section>
+
+    <!-- Produtos em Destaque -->
+    <section class="featured-products">
+      <h2>Produtos em Destaque</h2>
+      <div class="product-list">
+        <div class="product-item">
+          <img src="https://media.es.wired.com/photos/6324e7f7eca5c77cdd70ba33/16:9/w_2560%2Cc_limit/Gear-Keyboard-Shortcuts-1159555273.jpg" alt="Produto 1">
+          <p>Produto 1</p>
+          <p class="price">R$ 199,90</p>
+        </div>
+        <!-- Mais Produtos -->
+      </div>
+    </section>
+
+    <!-- Rodapé -->
+    <footer>
+      <p>&copy; 2024 Loja Online. Todos os direitos reservados.</p>
+    </footer>
+  </div>
+
+  <script>
+    // Função de login com validação
+    function handleLogin(event) {
+      event.preventDefault();  // Impede o envio do formulário
+
+      // Dados de login simulados
+      const validEmail = "usuario@exemplo.com";
+      const validPassword = "senha123";
+
+      // Obtendo os valores do formulário
+      const email = document.getElementById("email").value;
+      const password = document.getElementById("password").value;
+
+      // Verifica se o email e senha estão corretos
+      if (email === validEmail && password === validPassword) {
+        // Esconde a seção de login
+        document.querySelector('.login-section').style.display = 'none';
+
+        // Mostra o conteúdo principal
+        document.querySelector('.main-content').style.display = 'block';
+      } else {
+        // Exibe mensagem de erro se email ou senha forem inválidos
+        document.getElementById("errorMessage").style.display = 'block';
+      }
+    }
+  </script>
+</body>
+</html>
